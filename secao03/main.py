@@ -71,7 +71,7 @@ async def delete_curso(id_curso: int):
 async def somar(a: int = Query(default=None, gt=5), b: int = Query(default=None, gt=2), x_geek: str = Header(default=None), c: Optional[int] = None):
     soma = a + b
     if c:
-        soma + c
+        soma += c
 
     print(f'x-geek: {x_geek}')
     return {'Resultado': soma}
