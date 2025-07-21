@@ -3,6 +3,7 @@ from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 from fastapi import Response
 from fastapi import status
+from fastapi import Path
 from models import Curso
 
 app = FastAPI()
@@ -27,7 +28,7 @@ async def get_cursos():
 
 
 @app.get('/cursos/{id_curso}')
-async def get_curso(id_curso: int):
+async def get_curso(id_curso: int = Path(default=None, title="ID do Curso", description="Deve ser entre 1 e 2", gt=0, lt=3)):
     try:
         curso = cursos[id_curso]
         return curso
